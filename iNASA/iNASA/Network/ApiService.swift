@@ -15,6 +15,11 @@ protocol Service {
 }
 
 class ApiService: Service {
+    private(set) var session: URLSession?
+    
+    init(session: URLSession = .shared) {
+        self.session = session
+    }
     
     func request<T>(_ request: Any?, completionHandler: (T?, Error?) -> Void) {
         <#code#>
