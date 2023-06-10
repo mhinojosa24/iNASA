@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import Combine
 
 
-typealias ApiServiceHandler<T> = (T?, Error?) -> Void
+typealias FutureCompletion<T> = Future<T, Error>
 
 protocol Service {
-    func request<T>(_ request: Any?, completionHandler: ApiServiceHandler<T>)
+    func request<T: Decodable>(_ resource: Any?) -> FutureCompletion<T>
 }
 
 class ApiService: Service {
@@ -21,7 +22,13 @@ class ApiService: Service {
         self.session = session
     }
     
-    func request<T>(_ request: Any?, completionHandler: (T?, Error?) -> Void) {
-        <#code#>
+    func request<T: Decodable>(_ resource: Any?) -> FutureCompletion<T> {
+        // Create request body
+        // handle task & return promise
+        return Future<T, Error> { [weak self] promise in
+            guard let self = self else { return }
+            
+            // create data task 
+        }
     }
 }
