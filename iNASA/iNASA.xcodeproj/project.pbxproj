@@ -17,6 +17,7 @@
 		C7540F0C2A33957D002A749D /* iNASAUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7540F0B2A33957D002A749D /* iNASAUITests.swift */; };
 		C7540F0E2A33957D002A749D /* iNASAUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7540F0D2A33957D002A749D /* iNASAUITestsLaunchTests.swift */; };
 		C75AC4562A353C540050BBA1 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75AC4552A353C540050BBA1 /* ApiRequest.swift */; };
+		C75AC4592A3540A20050BBA1 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75AC4582A3540A20050BBA1 /* EndPoint.swift */; };
 		C7912D072A33A1770006A933 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912D062A33A1770006A933 /* ApiService.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		C7540F0B2A33957D002A749D /* iNASAUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iNASAUITests.swift; sourceTree = "<group>"; };
 		C7540F0D2A33957D002A749D /* iNASAUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iNASAUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C75AC4552A353C540050BBA1 /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
+		C75AC4582A3540A20050BBA1 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		C7912D062A33A1770006A933 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,9 +178,18 @@
 			isa = PBXGroup;
 			children = (
 				C7912D062A33A1770006A933 /* ApiService.swift */,
-				C75AC4552A353C540050BBA1 /* ApiRequest.swift */,
+				C75AC4572A3540800050BBA1 /* ApiRequests */,
+				C75AC4582A3540A20050BBA1 /* EndPoint.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		C75AC4572A3540800050BBA1 /* ApiRequests */ = {
+			isa = PBXGroup;
+			children = (
+				C75AC4552A353C540050BBA1 /* ApiRequest.swift */,
+			);
+			path = ApiRequests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,6 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C75AC4592A3540A20050BBA1 /* EndPoint.swift in Sources */,
 				C7540EEF2A33957C002A749D /* ViewController.swift in Sources */,
 				C7540EEB2A33957C002A749D /* AppDelegate.swift in Sources */,
 				C7912D072A33A1770006A933 /* ApiService.swift in Sources */,
