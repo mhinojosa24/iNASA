@@ -34,7 +34,7 @@ class ApiService: Service {
                     guard let httpResponse = response as? HTTPURLResponse, 200...299 ~= httpResponse.statusCode else { throw NetworkError.responseError }
                     return data
                 }
-                .decode(type: T.self, decoder: JSONDecoder())
+                .decode(type: Collection.self, decoder: JSONDecoder())
                 .receive(on: RunLoop.main)
                 .sink(receiveCompletion: { completion in
                     if case let .failure(error) = completion {
@@ -48,7 +48,11 @@ class ApiService: Service {
                         }
                     }
                 }, receiveValue: {
-                    promise(.success($0))
+                    guard let value = resource.parser($0) else {
+                        print("Oops something went wrong!!!!")
+                        return
+                    }
+                    promise(.success(value))
                 })
                 .store(in: &self.cancellable)
         }
@@ -57,7 +61,6 @@ class ApiService: Service {
     func configureApiRequest<T>(_ resource: ApiRequest<T>) -> URLRequest {
         var request = URLRequest(url: resource.endpoint.url)
         request.httpMethod = resource.method.rawValue
-        request.allHTTPHeaderFields = resource.headers
         return request
     }
 }

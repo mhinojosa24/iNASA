@@ -18,13 +18,13 @@ enum HTTPMethod: String {
 class ApiRequest<T> {
     private(set) var endpoint: EndPoint
     private(set) var method: HTTPMethod
-    private(set) var headers: [String: String]
-    private(set) var parameters: [String: Any]
+    var parser: (Collection) -> T?
     
-    init(endpoint: EndPoint, method: HTTPMethod, headers: [String : String] = [:], parameters: [String : Any] = [:]) {
+    init(endpoint: EndPoint, method: HTTPMethod) {
         self.endpoint = endpoint
         self.method = method
-        self.headers = headers
-        self.parameters = parameters
+        self.parser = { _ in
+            nil
+        }
     }
 }
