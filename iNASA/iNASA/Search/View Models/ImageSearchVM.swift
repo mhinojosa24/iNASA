@@ -28,6 +28,7 @@ class ImageSearchVM: BaseVM {
             }, receiveValue: { [weak self] searchResult in
                 guard let self = self else { return }
                 self.items = searchResult
+                print(items)
             })
             .store(in: &cancellables)
     }

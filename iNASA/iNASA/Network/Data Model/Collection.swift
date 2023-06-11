@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct Response: Decodable {
+    let collection: Collection
+}
+
 struct Collection: Decodable {
     let items: [Items]
 }
