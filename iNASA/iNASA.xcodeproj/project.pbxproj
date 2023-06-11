@@ -19,6 +19,7 @@
 		C75AC4562A353C540050BBA1 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75AC4552A353C540050BBA1 /* ApiRequest.swift */; };
 		C75AC4592A3540A20050BBA1 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75AC4582A3540A20050BBA1 /* EndPoint.swift */; };
 		C75AC45B2A3545360050BBA1 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75AC45A2A3545360050BBA1 /* NetworkError.swift */; };
+		C75AC45E2A354F660050BBA1 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75AC45D2A354F660050BBA1 /* Response.swift */; };
 		C7912D072A33A1770006A933 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912D062A33A1770006A933 /* ApiService.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		C75AC4552A353C540050BBA1 /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 		C75AC4582A3540A20050BBA1 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		C75AC45A2A3545360050BBA1 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		C75AC45D2A354F660050BBA1 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		C7912D062A33A1770006A933 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,6 +181,7 @@
 		C7540F1F2A3396A9002A749D /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				C75AC45C2A354F450050BBA1 /* Data Model */,
 				C7912D062A33A1770006A933 /* ApiService.swift */,
 				C75AC4572A3540800050BBA1 /* ApiRequests */,
 				C75AC4582A3540A20050BBA1 /* EndPoint.swift */,
@@ -193,6 +196,14 @@
 				C75AC4552A353C540050BBA1 /* ApiRequest.swift */,
 			);
 			path = ApiRequests;
+			sourceTree = "<group>";
+		};
+		C75AC45C2A354F450050BBA1 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				C75AC45D2A354F660050BBA1 /* Response.swift */,
+			);
+			path = "Data Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C75AC45E2A354F660050BBA1 /* Response.swift in Sources */,
 				C75AC4592A3540A20050BBA1 /* EndPoint.swift in Sources */,
 				C75AC45B2A3545360050BBA1 /* NetworkError.swift in Sources */,
 				C7540EEF2A33957C002A749D /* ViewController.swift in Sources */,
@@ -524,6 +536,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = WorkDayTakeHome.iNASA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SERVER_URL = "images-api.nasa.gov";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -555,6 +568,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = WorkDayTakeHome.iNASA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SERVER_URL = "images-api.nasa.gov";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

@@ -17,7 +17,7 @@ extension EndPoint {
     var url: URL {
         var components = URLComponents()
         components.scheme = "https"
-//        components.host = go through info plist to get host api
+        components.host = Bundle.main.infoDictionary?["SERVER_URL"] as? String ?? ""
         components.path = path
         components.queryItems = queryItems
         
@@ -29,5 +29,10 @@ extension EndPoint {
 }
 
 extension EndPoint {
-    // create endpoints
+    static func getNASAImagesFor(search: String) -> Self {
+        EndPoint(path: "/search", queryItems: [
+            .init(name: "q", value: search),
+            .init(name: "media_type", value: "image")
+        ])
+    }
 }
