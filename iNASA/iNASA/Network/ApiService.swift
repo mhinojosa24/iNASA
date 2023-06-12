@@ -33,14 +33,18 @@ class ApiService: Service {
                 completionHandler(nil, NetworkError.responseError)
             }
             
-            if let data = data {
-                do {
-                    let response: Response = try JSONDecoder().decode(Response.self, from: data)
-                    completionHandler(resource.parser(response.collection), nil)
-                } catch {
-                    completionHandler(nil, NetworkError.decodingError)
-                }
-            }
+            self.handleResponse(data, resource: resource, handler: completionHandler)
         })
+    }
+    
+    private func handleResponse<T>(_ data: Data?, resource: ApiRequest<T>, handler: @escaping ApiHandler<T>) {
+        if let data = data {
+            do {
+                let response: Response = try JSONDecoder().decode(Response.self, from: data)
+                handler(resource.parser(response.collection), nil)
+            } catch {
+                handler(nil, NetworkError.decodingError)
+            }
+        }
     }
 }
