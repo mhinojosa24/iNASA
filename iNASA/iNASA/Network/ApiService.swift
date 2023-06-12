@@ -37,9 +37,8 @@ class ApiService: Service {
                 do {
                     let response: Response = try JSONDecoder().decode(Response.self, from: data)
                     completionHandler(resource.parser(response.collection), nil)
-                    
-                } catch let error {
-                    completionHandler(nil, error)
+                } catch {
+                    completionHandler(nil, NetworkError.decodingError)
                 }
             }
         })
