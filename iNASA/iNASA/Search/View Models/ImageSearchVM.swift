@@ -15,21 +15,9 @@ class ImageSearchVM: BaseVM {
     var items: [Items]?
     
     func callApiToGetSearch(image query: String) {
-        let getSearchImageRequest = GetSearchQuery(query: query)
         
-        service?.request(getSearchImageRequest)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .failure(let error):
-                    print(error.localizedDescription)
-                case .finished:
-                    print("Finished!!")
-                }
-            }, receiveValue: { [weak self] searchResult in
-                guard let self = self else { return }
-                self.items = searchResult
-                print(items)
-            })
-            .store(in: &cancellables)
+        service?.request(GetSearchQuery(query: query), completionHandler: { items, error in
+            
+        })
     }
 }

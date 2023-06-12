@@ -117,9 +117,9 @@
 		C7540EE92A33957C002A749D /* iNASA */ = {
 			isa = PBXGroup;
 			children = (
-				C75AC4632A35F7790050BBA1 /* Modules */,
 				C7540F1A2A339600002A749D /* Delegates */,
-				C7540F1F2A3396A9002A749D /* Network */,
+				C75AC4632A35F7790050BBA1 /* Modules */,
+				C75AC4692A3760CE0050BBA1 /* Managers */,
 				C7540F1B2A339644002A749D /* Search */,
 				C7540EF02A33957C002A749D /* Main.storyboard */,
 				C7540EF32A33957D002A749D /* Assets.xcassets */,
@@ -232,6 +232,14 @@
 				C75AC4652A35F7C60050BBA1 /* BaseVM.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		C75AC4692A3760CE0050BBA1 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C7540F1F2A3396A9002A749D /* Network */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
