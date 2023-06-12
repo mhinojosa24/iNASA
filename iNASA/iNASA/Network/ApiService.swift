@@ -61,7 +61,6 @@ class ApiService: Service {
     
     func configureApiRequest<T>(_ resource: ApiRequest<T>) -> URLRequest {
         var request = URLRequest(url: resource.endpoint.url)
-        request.httpMethod = resource.method.rawValue
         return request
     }
 }
