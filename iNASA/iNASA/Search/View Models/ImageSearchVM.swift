@@ -15,9 +15,10 @@ class ImageSearchVM: BaseVM {
     var items: [Items]?
     
     func callApiToGetSearch(image query: String) {
-        
         service?.request(GetSearchQuery(query: query), completionHandler: { items, error in
-            
+            if let error = error {
+                print(error.localizedDescription)
+            }
         })
     }
 }

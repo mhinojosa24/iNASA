@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		C7540EEB2A33957C002A749D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7540EEA2A33957C002A749D /* AppDelegate.swift */; };
 		C7540EED2A33957C002A749D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7540EEC2A33957C002A749D /* SceneDelegate.swift */; };
-		C7540EEF2A33957C002A749D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7540EEE2A33957C002A749D /* ViewController.swift */; };
+		C7540EEF2A33957C002A749D /* ImageSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7540EEE2A33957C002A749D /* ImageSearchVC.swift */; };
 		C7540EF22A33957C002A749D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7540EF02A33957C002A749D /* Main.storyboard */; };
 		C7540EF42A33957D002A749D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7540EF32A33957D002A749D /* Assets.xcassets */; };
 		C7540EF72A33957D002A749D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7540EF52A33957D002A749D /* LaunchScreen.storyboard */; };
@@ -48,7 +48,7 @@
 		C7540EE72A33957C002A749D /* iNASA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iNASA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7540EEA2A33957C002A749D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7540EEC2A33957C002A749D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C7540EEE2A33957C002A749D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C7540EEE2A33957C002A749D /* ImageSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchVC.swift; sourceTree = "<group>"; };
 		C7540EF12A33957C002A749D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C7540EF32A33957D002A749D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7540EF62A33957D002A749D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 		C7540F1C2A339654002A749D /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C7540EEE2A33957C002A749D /* ViewController.swift */,
+				C7540EEE2A33957C002A749D /* ImageSearchVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -377,7 +377,7 @@
 				C75AC4592A3540A20050BBA1 /* EndPoint.swift in Sources */,
 				C75AC4682A374C950050BBA1 /* URLSession.swift in Sources */,
 				C75AC45B2A3545360050BBA1 /* NetworkError.swift in Sources */,
-				C7540EEF2A33957C002A749D /* ViewController.swift in Sources */,
+				C7540EEF2A33957C002A749D /* ImageSearchVC.swift in Sources */,
 				C75AC4662A35F7C60050BBA1 /* BaseVM.swift in Sources */,
 				C75AC4622A35F5290050BBA1 /* ImageSearchVM.swift in Sources */,
 				C7540EEB2A33957C002A749D /* AppDelegate.swift in Sources */,
