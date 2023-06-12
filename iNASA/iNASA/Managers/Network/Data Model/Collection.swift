@@ -12,12 +12,26 @@ struct Response: Decodable {
 }
 
 struct Collection: Decodable {
-    let items: [Items]
+    let items: [Items]?
 }
 
-struct Items: Decodable {
-    let data: [ImageData]
-    let links: [Links]
+struct Items: Decodable, Hashable {
+    enum CodingKeys: String, CodingKey {
+        case data, links
+        case nasaId = "nasa_id"
+    }
+    
+    let data: [ImageData]?
+    let links: [Links]?
+    let nasaId: String?
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(nasaId)
+    }
+    
+    static func == (lhs: Items, rhs: Items) -> Bool {
+        lhs.nasaId == rhs.nasaId
+    }
 }
 
 struct ImageData: Decodable {
