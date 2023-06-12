@@ -6,61 +6,42 @@
 //
 
 import Foundation
-import Combine
 
 
-typealias FutureCompletion<T> = Future<T, Error>
+typealias ApiHandler<T> = (T?, Error?) -> Void
+typealias ResponseHandler = (Any?, Error?) -> Void
+
 
 protocol Service {
-    func request<T: Decodable>(_ resource: ApiRequest<T>) -> FutureCompletion<T>
+    func request<T: Decodable>(_ resource: ApiRequest<T>, completionHandler: @escaping ApiHandler<T>)
 }
 
 class ApiService: Service {
     private(set) var session: URLSession?
-    private(set) var cancellable = Set<AnyCancellable>()
     
     init(session: URLSession = .shared) {
         self.session = session
     }
     
-    func request<T: Decodable>(_ resource: ApiRequest<T>) -> FutureCompletion<T> {
-        let request = configureApiRequest(resource)
-        
-        return Future<T, Error> { [weak self] promise in
-            guard let self = self else { return }
+    func request<T: Decodable>(_ resource: ApiRequest<T>, completionHandler: @escaping ApiHandler<T>) {
+        session?.request(resource.url, then: { data, response, error in
+            if let error = error {
+                completionHandler(nil, error)
+            }
             
-            session?.dataTaskPublisher(for: request)
-                .tryMap { (data, response) -> Data in
-                    guard let httpResponse = response as? HTTPURLResponse, 200...299 ~= httpResponse.statusCode else { throw NetworkError.responseError }
+            if let httpResponse = response as? HTTPURLResponse, !(200...299).contains(httpResponse.statusCode) {
+                completionHandler(nil, NetworkError.responseError)
+            }
+            
+            if let data = data {
+                do {
+                    let response: Response = try JSONDecoder().decode(Response.self, from: data)
+                    completionHandler(resource.parser(response.collection), nil)
                     
-                    return data
+                } catch let error {
+                    completionHandler(nil, error)
                 }
-                .decode(type: Response.self, decoder: JSONDecoder())
-                .receive(on: RunLoop.main)
-                .sink(receiveCompletion: { completion in
-                    if case let .failure(error) = completion {
-                        switch error {
-                        case let decodingError as DecodingError:
-                            promise(.failure(decodingError))
-                        case let apiError as NetworkError:
-                            promise(.failure(apiError))
-                        default:
-                            promise(.failure(NetworkError.unknown))
-                        }
-                    }
-                }, receiveValue: {
-                    guard let value = resource.parser($0.collection) else {
-                        print("Oops something went wrong!!!!")
-                        return
-                    }
-                    promise(.success(value))
-                })
-                .store(in: &self.cancellable)
-        }
-    }
-    
-    func configureApiRequest<T>(_ resource: ApiRequest<T>) -> URLRequest {
-        var request = URLRequest(url: resource.endpoint.url)
-        return request
+            }
+        })
     }
 }
