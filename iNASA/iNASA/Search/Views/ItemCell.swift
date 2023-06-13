@@ -8,7 +8,7 @@
 import UIKit
 
 struct ItemCellModel {
-    var imageURL: String?
+    var imageURL: URL?
     var title: String?
     var description: String?
 }
@@ -32,6 +32,8 @@ class ItemCell: UITableViewCell {
     }
     
     func setup() {
+        guard let imageURL = model?.imageURL, let title = model?.title else { return }
+        titleLabel.text = title
         
     }
     

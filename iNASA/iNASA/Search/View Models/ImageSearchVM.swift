@@ -20,7 +20,7 @@ class ImageSearchVM: BaseVM {
                 print(error.localizedDescription)
             }
             if let items = items {
-                items.compactMap({ ItemCellModel(imageURL: $0.links?.first?.href, title: $0.data?.first?.title, description: $0.data?.first?.description) }).forEach({ item in
+                items.compactMap({ ItemCellModel(imageURL: URL(string: $0.links?.first?.href ?? ""), title: $0.data?.first?.title, description: $0.data?.first?.description) }).forEach({ item in
                     self.tableViewDataSource?.append(item)
                 })
             }
