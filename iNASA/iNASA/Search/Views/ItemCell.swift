@@ -8,12 +8,6 @@
 import UIKit
 import Kingfisher
 
-struct ItemCellModel {
-    var imageURL: URL?
-    var title: String?
-    var description: String?
-}
-
 class ItemCell: UITableViewCell {
     
     @IBOutlet weak var itemImageView: UIImageView!

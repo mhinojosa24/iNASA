@@ -18,19 +18,23 @@ struct Collection: Decodable {
 struct Item: Decodable, Hashable {
     enum CodingKeys: String, CodingKey {
         case data, links
-        case nasaId = "nasa_id"
     }
     
     let data: [ImageData]?
     let links: [Links]?
-    let nasaId: String?
+    
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(nasaId)
+        hasher.combine(getItemId())
     }
     
     static func == (lhs: Item, rhs: Item) -> Bool {
-        lhs.nasaId == rhs.nasaId
+        lhs.getItemId() == rhs.getItemId()
+    }
+    
+    private func getItemId() -> String? {
+        guard let data = data, let nasaId = data.first?.nasaId else { return nil }
+        return nasaId
     }
 }
 
@@ -38,11 +42,13 @@ struct ImageData: Decodable {
     enum CodingKeys: String, CodingKey {
         case title, description
         case dateCreated = "date_created"
+        case nasaId = "nasa_id"
     }
     
     let title: String
     let description: String
     let dateCreated: String
+    let nasaId: String?
 }
 
 struct Links: Decodable {
