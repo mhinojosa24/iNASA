@@ -7,6 +7,8 @@
 
 import UIKit
 
+class tableViewDiffableDataSource: UITableViewDiffableDataSource<String?, Items> {}
+
 class ImageSearchVC: UIViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
@@ -16,6 +18,11 @@ class ImageSearchVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.callApiToGetSearch(image: "Mars")
+        configureUI()
+    }
+    
+    func configureUI() {
+        let itemCell = UINib(nibName: String(describing: ItemCell.self), bundle: nil)
+        
     }
 }
