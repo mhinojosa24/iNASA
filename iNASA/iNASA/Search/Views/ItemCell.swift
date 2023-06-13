@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 struct ItemCellModel {
     var imageURL: URL?
@@ -26,9 +27,15 @@ class ItemCell: UITableViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        itemImageView.image = nil
+        itemImageView.kf.cancelDownloadTask()
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        itemImageView.layer.cornerRadius = 8
     }
     
     func setup() {
@@ -39,5 +46,6 @@ class ItemCell: UITableViewCell {
         else { return }
         
         titleLabel.text = title
+        itemImageView.kf.setImage(with: imageURL, placeholder: UIImage(systemName: "photo"), options: [.transition(.fade(1)), .cacheOriginalImage])
     }
 }
