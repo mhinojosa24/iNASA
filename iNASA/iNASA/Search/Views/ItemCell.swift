@@ -28,13 +28,16 @@ class ItemCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-    
-    func setup() {
-        guard let imageURL = model?.imageURL, let title = model?.title else { return }
-        titleLabel.text = title
         
     }
     
+    func setup() {
+        guard
+            let model = model,
+            let imageURL = model.imageURL,
+            let title = model.title
+        else { return }
+        
+        titleLabel.text = title
+    }
 }
