@@ -7,7 +7,7 @@
 
 import UIKit
 
-class tableViewDiffableDataSource: UITableViewDiffableDataSource<String?, Items> {}
+class tableViewDiffableDataSource: UITableViewDiffableDataSource<String?, Item> {}
 
 class ImageSearchVC: UIViewController {
 
@@ -23,6 +23,6 @@ class ImageSearchVC: UIViewController {
     
     func configureUI() {
         let itemCell = UINib(nibName: String(describing: ItemCell.self), bundle: nil)
-        
+        tableView.register(itemCell, forCellReuseIdentifier: ItemCell.reuseIdentifier)
     }
 }

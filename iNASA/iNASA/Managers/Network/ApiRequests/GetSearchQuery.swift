@@ -7,7 +7,7 @@
 
 import Foundation
 
-class GetSearchQuery: ApiRequest<[Items]> {
+class GetSearchQuery: ApiRequest<[Item]> {
     
     init(query: String) {
         super.init(endpoint: .getNASAImagesFor(search: query))
