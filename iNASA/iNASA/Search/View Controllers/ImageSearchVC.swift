@@ -33,14 +33,25 @@ class ImageSearchVC: UIViewController {
     func configureTableView() {
         let itemCell = UINib(nibName: String(describing: ItemCell.self), bundle: nil)
         tableView.register(itemCell, forCellReuseIdentifier: ItemCell.reuseIdentifier)
+        tableView.backgroundColor = .white
+        tableView.rowHeight = 100
     }
     
     private func setupObservers() {
         $keyStroke.receive(on: RunLoop.main)
             .sink { keyWordValue in
-                print(keyWordValue)
+                self.viewModel.keyWordSearch = keyWordValue
             }
             .store(in: &subscribers)
+        
+        viewModel.diffableDataSource = TableViewDiffableDataSource(tableView: tableView, cellProvider: { tableView, indexPath, model in
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ItemCell.reuseIdentifier, for: indexPath) as? ItemCell else {
+                return UITableViewCell()
+            }
+            
+            cell.model = model
+            return cell
+        })
     }
 }
 
