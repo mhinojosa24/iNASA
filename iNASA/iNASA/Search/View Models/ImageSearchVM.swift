@@ -16,32 +16,23 @@ class ImageSearchVM: BaseVM {
     @Published var keyWordSearch: String = ""
     var diffableDataSource: TableViewDiffableDataSource!
     var snapshot = NSDiffableDataSourceSnapshot<String?, Item>()
+    var shouldShowEmptyState: Bool = true
     
-    override init(service: Service = ApiService()) {
-        super.init()
-        $keyWordSearch.receive(on: RunLoop.main)
-            .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
-            .sink(receiveValue: { _ in
-                if !self.keyWordSearch.isEmpty {
-                    self.callApiToGetSearchImage()
-                } else {
-                    self.updateDiffableDataSource(with: [Item]())
+    func callApiToGetSearchImage(query: String) {
+        if !query.isEmpty {
+            service?.request(GetSearchQuery(query: query), completionHandler: { items, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                
+                if let items = items {
+                    print(items)
+                    self.updateDiffableDataSource(with: items)
                 }
             })
-            .store(in: &subscribers)
-    }
-    
-    func callApiToGetSearchImage() {
-        service?.request(GetSearchQuery(query: keyWordSearch), completionHandler: { items, error in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-            
-            if let items = items {
-                print(items)
-                self.updateDiffableDataSource(with: items)
-            }
-        })
+        } else {
+            self.updateDiffableDataSource(with: [Item]())
+        }
     }
     
     func updateDiffableDataSource(with items: [Item]) {
