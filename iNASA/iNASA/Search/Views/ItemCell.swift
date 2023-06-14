@@ -23,6 +23,7 @@ class ItemCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        titleLabel.textColor = .none
         itemImageView.image = nil
         itemImageView.kf.cancelDownloadTask()
     }

@@ -31,9 +31,9 @@ class ImageSearchVC: UIViewController {
     }
     
     func configureTableView() {
+        navigationController?.view.backgroundColor = .systemBackground
         let itemCell = UINib(nibName: String(describing: ItemCell.self), bundle: nil)
         tableView.register(itemCell, forCellReuseIdentifier: ItemCell.reuseIdentifier)
-        tableView.backgroundColor = .white
         tableView.rowHeight = 100
     }
     
