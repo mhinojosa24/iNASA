@@ -7,22 +7,41 @@
 
 import Foundation
 import Combine
+import UIKit
 
 
 class ImageSearchVM: BaseVM {
     
-    private var cancellables = Set<AnyCancellable>()
-    var tableViewDataSource: [ItemCellModel]?
+    private var subscribers = Set<AnyCancellable>()
+    @Published var keyWordSearch: String = ""
+    var diffableDataSource: TableViewDiffableDataSource!
+    var snapshot = NSDiffableDataSourceSnapshot<String?, Item>()
     
-    func callApiToGetSearch(image query: String) {
-        service?.request(GetSearchQuery(query: query), completionHandler: { items, error in
+    override init(service: Service = ApiService()) {
+        super.init()
+        $keyWordSearch.receive(on: RunLoop.main)
+            .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
+            .sink(receiveValue: { _ in
+                self.callApiToGetSearchImage()
+            })
+            .store(in: &subscribers)
+    }
+    
+    func callApiToGetSearchImage() {
+        service?.request(GetSearchQuery(query: keyWordSearch), completionHandler: { items, error in
             if let error = error {
                 print(error.localizedDescription)
             }
+            
+            guard self.diffableDataSource != nil else { return }
+            
+            self.snapshot.deleteAllItems()
+            self.snapshot.appendSections([""])
+            
             if let items = items {
-                items.compactMap({ ItemCellModel(imageURL: URL(string: $0.links?.first?.href ?? ""), title: $0.data?.first?.title, description: $0.data?.first?.description) }).forEach({ item in
-                    self.tableViewDataSource?.append(item)
-                })
+                print(items)
+                self.snapshot.appendItems(items, toSection: "")
+                self.diffableDataSource.apply(self.snapshot, animatingDifferences: true)
             }
         })
     }
