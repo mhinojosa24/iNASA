@@ -8,6 +8,7 @@
 import Foundation
 
 
+/// This struct is an endpoint factory
 struct EndPoint {
     var path: String
     var queryItems: [URLQueryItem] = []

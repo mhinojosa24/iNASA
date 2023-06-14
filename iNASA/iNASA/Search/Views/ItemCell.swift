@@ -10,6 +10,7 @@ import Kingfisher
 
 class ItemCell: UITableViewCell {
     
+    // MARK: - IBOutlets
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     

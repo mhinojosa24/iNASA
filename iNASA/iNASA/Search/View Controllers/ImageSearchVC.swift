@@ -27,12 +27,13 @@ class ImageSearchVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureTableView()
         setupObservers()
     }
     
-    func configureTableView() {
+    // MARK: - User Defined Methods
+    
+    private func configureTableView() {
         navigationController?.view.backgroundColor = .systemBackground
         let itemCell = UINib(nibName: String(describing: ItemCell.self), bundle: nil)
         tableView.register(itemCell, forCellReuseIdentifier: ItemCell.reuseIdentifier)
@@ -61,6 +62,8 @@ class ImageSearchVC: UIViewController {
         })
     }
 }
+
+// MARK: - UISearchBarDelegate Methods
 
 extension ImageSearchVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

@@ -12,12 +12,21 @@ import UIKit
 
 class ImageSearchVM: BaseVM {
     
+    // MARK: - Private Variables
     private var subscribers = Set<AnyCancellable>()
+    
+    // MARK: - Published Variables
     @Published var keyWordSearch: String = ""
+    
+    // MARK: - Variables
     var diffableDataSource: TableViewDiffableDataSource!
     var snapshot = NSDiffableDataSourceSnapshot<String?, Item>()
     var shouldShowEmptyState: Bool = true
     
+    // MARK: - User Defined Methods
+    
+    /// Method is to ping NASA API for search image based on query
+    /// - Parameter query: String
     func callApiToGetSearchImage(query: String) {
         if !query.isEmpty {
             service?.request(GetSearchQuery(query: query), completionHandler: { items, error in
@@ -34,6 +43,8 @@ class ImageSearchVM: BaseVM {
         }
     }
     
+    /// Method is called to update diffable datasource
+    /// - Parameter items: Array of Items
     func updateDiffableDataSource(with items: [Item]) {
         DispatchQueue.main.async {
             guard self.diffableDataSource != nil else { return }
