@@ -15,7 +15,7 @@ class ItemCell: UITableViewCell {
     
     static var reuseIdentifier: String { String(describing: self) }
     
-    var model: ItemCellModel? {
+    var model: Item? {
         didSet {
             setup()
         }
@@ -35,11 +35,11 @@ class ItemCell: UITableViewCell {
     func setup() {
         guard
             let model = model,
-            let imageURL = model.imageURL,
-            let title = model.title
+            let imageURL = URL(string: model.links?.first?.href ?? ""),
+            let title = model.data?.first?.title
         else { return }
         
         titleLabel.text = title
-        itemImageView.kf.setImage(with: imageURL, placeholder: UIImage(systemName: "photo"), options: [.transition(.fade(1)), .cacheOriginalImage])
+        itemImageView.kf.setImage(with: imageURL, placeholder: UIImage(systemName: "photo.fill"), options: [.transition(.fade(1)), .cacheOriginalImage])
     }
 }
