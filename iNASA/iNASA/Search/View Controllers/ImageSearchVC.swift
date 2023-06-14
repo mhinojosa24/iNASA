@@ -15,6 +15,8 @@ class ImageSearchVC: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var emptyStateStackView: UIStackView!
+    @IBOutlet weak var emptyStateImageView: UIImageView!
     
     // MARK: - Published Variables
     @Published var keyStroke: String = ""
@@ -35,14 +37,19 @@ class ImageSearchVC: UIViewController {
         let itemCell = UINib(nibName: String(describing: ItemCell.self), bundle: nil)
         tableView.register(itemCell, forCellReuseIdentifier: ItemCell.reuseIdentifier)
         tableView.rowHeight = 100
+        let emptyStateImage = self.traitCollection.userInterfaceStyle == .dark ? UIImage(named: "emptyStateDarkMode") : UIImage(named: "emptyStateLightMode")
+        self.emptyStateImageView.image = emptyStateImage
     }
     
     private func setupObservers() {
         $keyStroke.receive(on: RunLoop.main)
-            .sink { keyWordValue in
-                self.viewModel.keyWordSearch = keyWordValue
-            }
-            .store(in: &subscribers)
+            .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
+            .sink(receiveValue: { keyWordValue in
+                self.viewModel.callApiToGetSearchImage(query: keyWordValue)
+                UIView.animate(withDuration: 0, delay: 1.5) {
+                    self.emptyStateStackView.isHidden = !keyWordValue.isEmpty
+                }
+            }).store(in: &subscribers)
         
         viewModel.diffableDataSource = TableViewDiffableDataSource(tableView: tableView, cellProvider: { tableView, indexPath, model in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ItemCell.reuseIdentifier, for: indexPath) as? ItemCell else {
@@ -62,5 +69,9 @@ extension ImageSearchVC: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.keyStroke = ""
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
     }
 }

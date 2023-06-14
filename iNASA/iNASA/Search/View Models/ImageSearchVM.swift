@@ -25,8 +25,7 @@ class ImageSearchVM: BaseVM {
                     print(error.localizedDescription)
                 }
                 
-                if let items = items {
-                    print(items)
+                if let items = items {ß
                     self.updateDiffableDataSource(with: items)
                 }
             })
