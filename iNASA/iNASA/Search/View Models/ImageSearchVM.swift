@@ -22,7 +22,11 @@ class ImageSearchVM: BaseVM {
         $keyWordSearch.receive(on: RunLoop.main)
             .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
             .sink(receiveValue: { _ in
-                self.callApiToGetSearchImage()
+                if !self.keyWordSearch.isEmpty {
+                    self.callApiToGetSearchImage()
+                } else {
+                    self.updateDiffableDataSource(with: [Item]())
+                }
             })
             .store(in: &subscribers)
     }
@@ -33,16 +37,20 @@ class ImageSearchVM: BaseVM {
                 print(error.localizedDescription)
             }
             
-            guard self.diffableDataSource != nil else { return }
-            
-            self.snapshot.deleteAllItems()
-            self.snapshot.appendSections([""])
-            
             if let items = items {
                 print(items)
-                self.snapshot.appendItems(items, toSection: "")
-                self.diffableDataSource.apply(self.snapshot, animatingDifferences: true)
+                self.updateDiffableDataSource(with: items)
             }
         })
+    }
+    
+    func updateDiffableDataSource(with items: [Item]) {
+        DispatchQueue.main.async {
+            guard self.diffableDataSource != nil else { return }
+            self.snapshot.deleteAllItems()
+            self.snapshot.appendSections([""])
+            self.snapshot.appendItems(items, toSection: "")
+            self.diffableDataSource.apply(self.snapshot, animatingDifferences: true)
+        }
     }
 }
