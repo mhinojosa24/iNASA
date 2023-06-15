@@ -28,6 +28,10 @@
 		C75AC4762A3790060050BBA1 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75AC4742A3790060050BBA1 /* ItemCell.swift */; };
 		C75AC4772A3790060050BBA1 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C75AC4752A3790060050BBA1 /* ItemCell.xib */; };
 		C7912D072A33A1770006A933 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912D062A33A1770006A933 /* ApiService.swift */; };
+		C7BC35982A3A8B6500C68927 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BC35972A3A8B6500C68927 /* Response.swift */; };
+		C7BC359A2A3A8B8400C68927 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BC35992A3A8B8400C68927 /* Item.swift */; };
+		C7BC359C2A3A8BA300C68927 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BC359B2A3A8BA300C68927 /* ImageData.swift */; };
+		C7BC359E2A3A8BC400C68927 /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BC359D2A3A8BC400C68927 /* Links.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +78,10 @@
 		C75AC4742A3790060050BBA1 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		C75AC4752A3790060050BBA1 /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 		C7912D062A33A1770006A933 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		C7BC35972A3A8B6500C68927 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		C7BC35992A3A8B8400C68927 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		C7BC359B2A3A8BA300C68927 /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
+		C7BC359D2A3A8BC400C68927 /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 		D1D7B150FB523D13DB39BF7C /* Pods-iNASA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iNASA.debug.xcconfig"; path = "Target Support Files/Pods-iNASA/Pods-iNASA.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,7 +125,6 @@
 				D1D7B150FB523D13DB39BF7C /* Pods-iNASA.debug.xcconfig */,
 				52728118981C7631CD8B5129 /* Pods-iNASA.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -245,6 +252,10 @@
 			isa = PBXGroup;
 			children = (
 				C75AC45D2A354F660050BBA1 /* Collection.swift */,
+				C7BC35972A3A8B6500C68927 /* Response.swift */,
+				C7BC35992A3A8B8400C68927 /* Item.swift */,
+				C7BC359B2A3A8BA300C68927 /* ImageData.swift */,
+				C7BC359D2A3A8BC400C68927 /* Links.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -455,9 +466,13 @@
 				C75AC4682A374C950050BBA1 /* URLSession.swift in Sources */,
 				C75AC45B2A3545360050BBA1 /* NetworkError.swift in Sources */,
 				C7540EEF2A33957C002A749D /* ImageSearchVC.swift in Sources */,
+				C7BC35982A3A8B6500C68927 /* Response.swift in Sources */,
+				C7BC359C2A3A8BA300C68927 /* ImageData.swift in Sources */,
 				C75AC4662A35F7C60050BBA1 /* BaseVM.swift in Sources */,
 				C75AC4622A35F5290050BBA1 /* ImageSearchVM.swift in Sources */,
 				C7540EEB2A33957C002A749D /* AppDelegate.swift in Sources */,
+				C7BC359A2A3A8B8400C68927 /* Item.swift in Sources */,
+				C7BC359E2A3A8BC400C68927 /* Links.swift in Sources */,
 				C7912D072A33A1770006A933 /* ApiService.swift in Sources */,
 				C75AC4562A353C540050BBA1 /* ApiRequest.swift in Sources */,
 				C75AC4602A35ECC50050BBA1 /* GetSearchQuery.swift in Sources */,
