@@ -1,0 +1,41 @@
+//
+//  DataResponse.json
+//  iNASATests
+//
+//  Created by Maximo Hinojosa on 6/15/23.
+//
+
+{
+    "collection": {
+        "version": "1.0",
+        "href": "http://images-api.nasa.gov/search?q=eclipse&media_type=image",
+        "items": [
+            {
+                "href": "https://images-assets.nasa.gov/image/PIA10551/collection.json",
+                "data": [
+                    {
+                        "center": "JPL",
+                        "title": "Enceladus in Eclipse",
+                        "nasa_id": "PIA10551",
+                        "date_created": "2009-01-07T13:50:41Z",
+                        "keywords": [
+                            "Enceladus",
+                            "Cassini-Huygens"
+                        ],
+                        "media_type": "image",
+                        "description_508": "Enceladus in Eclipse",
+                        "secondary_creator": "NASA/JPL/Space Science Institute",
+                        "description": "Enceladus in Eclipse"
+                    }
+                ],
+                "links": [
+                    {
+                        "href": "https://images-assets.nasa.gov/image/PIA10551/PIA10551~thumb.jpg",
+                        "rel": "preview",
+                        "render": "image"
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -36,4 +36,11 @@ extension EndPoint {
             .init(name: "media_type", value: "image")
         ])
     }
+    
+    static func getMockSearchFor(query: String) -> Self {
+        EndPoint(path: "/search", queryItems: [
+            .init(name: "q", value: query),
+            .init(name: "media_type", value: "image")
+        ])
+    }
 }
