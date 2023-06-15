@@ -94,7 +94,7 @@
 		C7BC359F2A3A947D00C68927 /* TableViewDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDiffableDataSource.swift; sourceTree = "<group>"; };
 		C7BC35A12A3A971900C68927 /* ImageDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailVC.swift; sourceTree = "<group>"; };
 		C7BC35A32A3A9BAA00C68927 /* ImageDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailVM.swift; sourceTree = "<group>"; };
-		C7BC35B02A3B42F200C68927 /* MockData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockData.json; sourceTree = "<group>"; };
+		C7BC35B02A3B42F200C68927 /* MockData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockData.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		C7BC35B32A3B4EDD00C68927 /* Mockable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mockable.swift; sourceTree = "<group>"; };
 		C7BC35B52A3B5E0400C68927 /* MockApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApiRequest.swift; sourceTree = "<group>"; };
 		C7BC35B72A3B5E6200C68927 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
@@ -257,7 +257,6 @@
 				C75AC4582A3540A20050BBA1 /* EndPoint.swift */,
 				C75AC45A2A3545360050BBA1 /* NetworkError.swift */,
 				C75AC4672A374C950050BBA1 /* URLSession.swift */,
-				C7BC35BD2A3B607300C68927 /* MockService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -280,7 +279,6 @@
 				C7BC35992A3A8B8400C68927 /* Item.swift */,
 				C7BC359B2A3A8BA300C68927 /* ImageData.swift */,
 				C7BC359D2A3A8BC400C68927 /* Links.swift */,
-				C7BC35B32A3B4EDD00C68927 /* Mockable.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -304,9 +302,19 @@
 		C75AC4692A3760CE0050BBA1 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				C7BC35BF2A3B886000C68927 /* Mock Network */,
 				C7540F1F2A3396A9002A749D /* Network */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		C7BC35BF2A3B886000C68927 /* Mock Network */ = {
+			isa = PBXGroup;
+			children = (
+				C7BC35BD2A3B607300C68927 /* MockService.swift */,
+				C7BC35B32A3B4EDD00C68927 /* Mockable.swift */,
+			);
+			path = "Mock Network";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

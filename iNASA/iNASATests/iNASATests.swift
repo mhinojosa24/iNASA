@@ -8,58 +8,11 @@
 import XCTest
 @testable import iNASA
 
+
 final class iNASATests: XCTestCase {
     var urlSession: URLSession!
     var mockService: MockService!
     let req = MockApiRequest(query: "eclipse")
-    
-    let mockString =
-    """
-    {
-        "collection": {
-            "version": "1.0",
-            "href": "http://images-api.nasa.gov/search?q=eclipse&media_type=image",
-            "items": [
-                {
-                    "href": "https://images-assets.nasa.gov/image/PIA10551/collection.json",
-                    "data": [
-                        {
-                            "center": "JPL",
-                            "title": "Enceladus in Eclipse",
-                            "nasa_id": "PIA10551",
-                            "date_created": "2009-01-07T13:50:41Z",
-                            "keywords": [
-                                "Enceladus",
-                                "Cassini-Huygens"
-                            ],
-                            "media_type": "image",
-                            "description_508": "Enceladus in Eclipse",
-                            "secondary_creator": "NASA/JPL/Space Science Institute",
-                            "description": "Enceladus in Eclipse"
-                        }
-                    ],
-                    "links": [
-                        {
-                            "href": "https://images-assets.nasa.gov/image/PIA10551/PIA10551~thumb.jpg",
-                            "rel": "preview",
-                            "render": "image"
-                        }
-                    ]
-                }
-            ]
-        }
-    }
-    """
-    
-
-    func testRequestFactory() throws {
-        let r = GetSearchQuery(query: "mars")
-        XCTAssertTrue(r.endpoint.url.scheme == "https")
-        XCTAssertTrue(r.endpoint.url.path() == "/search")
-        XCTAssertTrue(r.endpoint.url.query() == "q=mars&media_type=image")
-        XCTAssertTrue(r.endpoint.url.host() == Bundle.main.infoDictionary?["SERVER_URL"] as? String ?? "")
-    }
-    
 
     
     override func setUp() {
@@ -74,13 +27,21 @@ final class iNASATests: XCTestCase {
         super.tearDown()
     }
     
+    func testRequestFactory() throws {
+        let r = GetSearchQuery(query: "mars")
+        XCTAssertTrue(r.endpoint.url.scheme == "https")
+        XCTAssertTrue(r.endpoint.url.path() == "/search")
+        XCTAssertTrue(r.endpoint.url.query() == "q=mars&media_type=image")
+        XCTAssertTrue(r.endpoint.url.host() == Bundle.main.infoDictionary?["SERVER_URL"] as? String ?? "")
+    }
+    
     func testGetImageSuccess() throws {
         let response = HTTPURLResponse(url: req.url,
                                        statusCode: 200,
                                        httpVersion: nil,
-                                       headerFields: ["Content-Type": "application/json"])!
+                                       headerFields: ["Content-Type": "application/json"]) ?? HTTPURLResponse()
         
-        let mockData: Data = Data(mockString.utf8)
+        let mockData: Data = mockService.loadJsonData(filename: "MockData", extensionType: .json) ?? Data()
         
         MockURLProtocol.requestHandler = { request in
             return (response, mockData)

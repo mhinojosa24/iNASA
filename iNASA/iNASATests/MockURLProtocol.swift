@@ -8,6 +8,7 @@
 import XCTest
 
 
+/// This class handles the loading of protocol-specific URL data.
 class MockURLProtocol: URLProtocol {
     static var requestHandler: ((URLRequest) throws -> (HTTPURLResponse, Data))?
     
