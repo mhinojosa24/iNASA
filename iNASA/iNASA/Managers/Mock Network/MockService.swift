@@ -7,14 +7,16 @@
 
 import Foundation
 
+
+/// This class sole purpose is to mock `Service` class functionality
 class MockService: Service, Mockable {
     func request<T: Decodable>(_ resource: ApiRequest<T>, completionHandler: @escaping ApiHandler<T>)  {
         return loadJson(filename: "MockData",
                         extensionType: .json,
-                        type: T.self) { result in
+                        type: Response.self) { result in
             switch result {
-            case .success(let items):
-                completionHandler(items, nil)
+            case .success(let response):
+                completionHandler(resource.parser(response.collection), nil)
             case .failure(let error):
                 completionHandler(nil, error)
             }
