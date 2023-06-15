@@ -8,7 +8,6 @@
 import UIKit
 import Combine
 
-class TableViewDiffableDataSource: UITableViewDiffableDataSource<String?, Item> {}
 
 class ImageSearchVC: UIViewController {
     

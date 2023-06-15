@@ -32,6 +32,7 @@
 		C7BC359A2A3A8B8400C68927 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BC35992A3A8B8400C68927 /* Item.swift */; };
 		C7BC359C2A3A8BA300C68927 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BC359B2A3A8BA300C68927 /* ImageData.swift */; };
 		C7BC359E2A3A8BC400C68927 /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BC359D2A3A8BC400C68927 /* Links.swift */; };
+		C7BC35A02A3A947D00C68927 /* TableViewDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BC359F2A3A947D00C68927 /* TableViewDiffableDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		C7BC35992A3A8B8400C68927 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		C7BC359B2A3A8BA300C68927 /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		C7BC359D2A3A8BC400C68927 /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
+		C7BC359F2A3A947D00C68927 /* TableViewDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDiffableDataSource.swift; sourceTree = "<group>"; };
 		D1D7B150FB523D13DB39BF7C /* Pods-iNASA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iNASA.debug.xcconfig"; path = "Target Support Files/Pods-iNASA/Pods-iNASA.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -213,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				C75AC4612A35F5290050BBA1 /* ImageSearchVM.swift */,
+				C7BC359F2A3A947D00C68927 /* TableViewDiffableDataSource.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				C75AC45B2A3545360050BBA1 /* NetworkError.swift in Sources */,
 				C7540EEF2A33957C002A749D /* ImageSearchVC.swift in Sources */,
 				C7BC35982A3A8B6500C68927 /* Response.swift in Sources */,
+				C7BC35A02A3A947D00C68927 /* TableViewDiffableDataSource.swift in Sources */,
 				C7BC359C2A3A8BA300C68927 /* ImageData.swift in Sources */,
 				C75AC4662A35F7C60050BBA1 /* BaseVM.swift in Sources */,
 				C75AC4622A35F5290050BBA1 /* ImageSearchVM.swift in Sources */,
