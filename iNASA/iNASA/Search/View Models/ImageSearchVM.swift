@@ -11,17 +11,12 @@ import UIKit
 
 
 class ImageSearchVM: BaseVM {
-    
-    // MARK: - Private Variables
-    private var subscribers = Set<AnyCancellable>()
-    
-    // MARK: - Published Variables
-    @Published var keyWordSearch: String = ""
-    
+
     // MARK: - Variables
     var diffableDataSource: TableViewDiffableDataSource!
     var snapshot = NSDiffableDataSourceSnapshot<String?, Item>()
-    var shouldShowEmptyState: Bool = true
+    
+    @Published var shouldDisplayEmptyState: Bool = true
     
     // MARK: - User Defined Methods
     
@@ -47,6 +42,7 @@ class ImageSearchVM: BaseVM {
     /// - Parameter items: Array of Items
     func updateDiffableDataSource(with items: [Item]) {
         DispatchQueue.main.async {
+            self.shouldDisplayEmptyState = items.isEmpty
             guard self.diffableDataSource != nil else { return }
             self.snapshot.deleteAllItems()
             self.snapshot.appendSections([""])

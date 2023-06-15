@@ -45,18 +45,23 @@ class ImageSearchVC: UIViewController {
         tableView.delegate = self
         tableView.register(itemCell, forCellReuseIdentifier: ItemCell.reuseIdentifier)
         tableView.rowHeight = uiConstants.cellHeight
+        tableView.keyboardDismissMode = .onDrag
         let emptyStateImage = self.traitCollection.userInterfaceStyle == .dark ? UIImage(named: "emptyStateDarkMode") : UIImage(named: "emptyStateLightMode")
         self.emptyStateImageView.image = emptyStateImage
     }
     
     private func setupObservers() {
+        viewModel.$shouldDisplayEmptyState.receive(on: RunLoop.main)
+            .sink(receiveValue: { shouldDisplay in
+                UIView.animate(withDuration: .zero) {
+                    self.emptyStateStackView.isHidden = !shouldDisplay
+                }
+            }).store(in: &subscribers)
+        
         $keyStroke.receive(on: RunLoop.main)
             .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
             .sink(receiveValue: { keyWordValue in
                 self.viewModel.callApiToGetSearchImage(query: keyWordValue)
-                UIView.animate(withDuration: .zero, delay: self.uiConstants.animationDelay) {
-                    self.emptyStateStackView.isHidden = !keyWordValue.isEmpty
-                }
             }).store(in: &subscribers)
         
         viewModel.diffableDataSource = TableViewDiffableDataSource(tableView: tableView, cellProvider: { tableView, indexPath, model in
