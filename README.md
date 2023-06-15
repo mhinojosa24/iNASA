@@ -1,6 +1,6 @@
 <p align="center">
-<img src="https://images.ui8.net/uploads/6_1632688928415.png" alt="Spaceman" title="launch" width="655"/>
-</p
+<img src="https://images.ui8.net/uploads/6_1632688928415.png" alt="Spaceman" title="launch" width="800"/>
+</p>
 
 # iNASA
 
