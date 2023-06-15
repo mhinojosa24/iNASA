@@ -12,6 +12,12 @@ class TableViewDiffableDataSource: UITableViewDiffableDataSource<String?, Item> 
 
 class ImageSearchVC: UIViewController {
     
+    struct UIConstants {
+        let defaultTableViewCell = UITableViewCell()
+        let cellHeight: CGFloat = 100
+        let animationDelay: Double = 1.5
+    }
+    
     // MARK: - IBOutlets
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -23,21 +29,22 @@ class ImageSearchVC: UIViewController {
     
     // MARK: - Constants & Variables
     let viewModel = ImageSearchVM()
+    let uiConstants = UIConstants()
     var subscribers = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTableView()
+        configureUI()
         setupObservers()
     }
     
     // MARK: - User Defined Methods
     
-    private func configureTableView() {
+    private func configureUI() {
         navigationController?.view.backgroundColor = .systemBackground
         let itemCell = UINib(nibName: String(describing: ItemCell.self), bundle: nil)
         tableView.register(itemCell, forCellReuseIdentifier: ItemCell.reuseIdentifier)
-        tableView.rowHeight = 100
+        tableView.rowHeight = uiConstants.cellHeight
         let emptyStateImage = self.traitCollection.userInterfaceStyle == .dark ? UIImage(named: "emptyStateDarkMode") : UIImage(named: "emptyStateLightMode")
         self.emptyStateImageView.image = emptyStateImage
     }
@@ -47,14 +54,14 @@ class ImageSearchVC: UIViewController {
             .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
             .sink(receiveValue: { keyWordValue in
                 self.viewModel.callApiToGetSearchImage(query: keyWordValue)
-                UIView.animate(withDuration: 0, delay: 1.5) {
+                UIView.animate(withDuration: .zero, delay: self.uiConstants.animationDelay) {
                     self.emptyStateStackView.isHidden = !keyWordValue.isEmpty
                 }
             }).store(in: &subscribers)
         
         viewModel.diffableDataSource = TableViewDiffableDataSource(tableView: tableView, cellProvider: { tableView, indexPath, model in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ItemCell.reuseIdentifier, for: indexPath) as? ItemCell else {
-                return UITableViewCell()
+                return self.uiConstants.defaultTableViewCell
             }
             
             cell.model = model

@@ -230,8 +230,8 @@
 			isa = PBXGroup;
 			children = (
 				C75AC45C2A354F450050BBA1 /* Data Model */,
-				C7912D062A33A1770006A933 /* ApiService.swift */,
 				C75AC4572A3540800050BBA1 /* ApiRequests */,
+				C7912D062A33A1770006A933 /* ApiService.swift */,
 				C75AC4582A3540A20050BBA1 /* EndPoint.swift */,
 				C75AC45A2A3545360050BBA1 /* NetworkError.swift */,
 				C75AC4672A374C950050BBA1 /* URLSession.swift */,
@@ -251,8 +251,8 @@
 		C75AC45C2A354F450050BBA1 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				C75AC45D2A354F660050BBA1 /* Collection.swift */,
 				C7BC35972A3A8B6500C68927 /* Response.swift */,
+				C75AC45D2A354F660050BBA1 /* Collection.swift */,
 				C7BC35992A3A8B8400C68927 /* Item.swift */,
 				C7BC359B2A3A8BA300C68927 /* ImageData.swift */,
 				C7BC359D2A3A8BC400C68927 /* Links.swift */,
