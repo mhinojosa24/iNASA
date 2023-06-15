@@ -42,6 +42,7 @@ class ImageSearchVC: UIViewController {
     private func configureUI() {
         navigationController?.view.backgroundColor = .systemBackground
         let itemCell = UINib(nibName: String(describing: ItemCell.self), bundle: nil)
+        tableView.delegate = self
         tableView.register(itemCell, forCellReuseIdentifier: ItemCell.reuseIdentifier)
         tableView.rowHeight = uiConstants.cellHeight
         let emptyStateImage = self.traitCollection.userInterfaceStyle == .dark ? UIImage(named: "emptyStateDarkMode") : UIImage(named: "emptyStateLightMode")
@@ -82,5 +83,18 @@ extension ImageSearchVC: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension ImageSearchVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let imageModel = viewModel.diffableDataSource.itemIdentifier(for: indexPath) else { return }
+        
+        if let imageDetailVC = storyboard?.instantiateViewController(withIdentifier: "ImageDetailVC") as? ImageDetailVC {
+            imageDetailVC.viewModel.imageDetailModel = imageModel
+            self.navigationController?.pushViewController(imageDetailVC, animated: false)
+        }
     }
 }
