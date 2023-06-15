@@ -40,6 +40,7 @@
 		C7BC35B42A3B4EDD00C68927 /* Mockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BC35B32A3B4EDD00C68927 /* Mockable.swift */; };
 		C7BC35B62A3B5E0400C68927 /* MockApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BC35B52A3B5E0400C68927 /* MockApiRequest.swift */; };
 		C7BC35BC2A3B5EA900C68927 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BC35B72A3B5E6200C68927 /* MockURLProtocol.swift */; };
+		C7BC35BE2A3B607300C68927 /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BC35BD2A3B607300C68927 /* MockService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		C7BC35B32A3B4EDD00C68927 /* Mockable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mockable.swift; sourceTree = "<group>"; };
 		C7BC35B52A3B5E0400C68927 /* MockApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApiRequest.swift; sourceTree = "<group>"; };
 		C7BC35B72A3B5E6200C68927 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
+		C7BC35BD2A3B607300C68927 /* MockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockService.swift; sourceTree = "<group>"; };
 		D1D7B150FB523D13DB39BF7C /* Pods-iNASA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iNASA.debug.xcconfig"; path = "Target Support Files/Pods-iNASA/Pods-iNASA.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -255,6 +257,7 @@
 				C75AC4582A3540A20050BBA1 /* EndPoint.swift */,
 				C75AC45A2A3545360050BBA1 /* NetworkError.swift */,
 				C75AC4672A374C950050BBA1 /* URLSession.swift */,
+				C7BC35BD2A3B607300C68927 /* MockService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				C7BC35A02A3A947D00C68927 /* TableViewDiffableDataSource.swift in Sources */,
 				C7BC359C2A3A8BA300C68927 /* ImageData.swift in Sources */,
 				C75AC4662A35F7C60050BBA1 /* BaseVM.swift in Sources */,
+				C7BC35BE2A3B607300C68927 /* MockService.swift in Sources */,
 				C75AC4622A35F5290050BBA1 /* ImageSearchVM.swift in Sources */,
 				C7BC35B62A3B5E0400C68927 /* MockApiRequest.swift in Sources */,
 				C7540EEB2A33957C002A749D /* AppDelegate.swift in Sources */,
