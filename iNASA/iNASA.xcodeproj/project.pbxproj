@@ -18,7 +18,6 @@
 		C7540F0E2A33957D002A749D /* iNASAUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7540F0D2A33957D002A749D /* iNASAUITestsLaunchTests.swift */; };
 		C75AC4562A353C540050BBA1 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75AC4552A353C540050BBA1 /* ApiRequest.swift */; };
 		C75AC4592A3540A20050BBA1 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75AC4582A3540A20050BBA1 /* EndPoint.swift */; };
-		C75AC45B2A3545360050BBA1 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75AC45A2A3545360050BBA1 /* NetworkError.swift */; };
 		C75AC45E2A354F660050BBA1 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75AC45D2A354F660050BBA1 /* Collection.swift */; };
 		C75AC4602A35ECC50050BBA1 /* GetSearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75AC45F2A35ECC50050BBA1 /* GetSearchQuery.swift */; };
 		C75AC4622A35F5290050BBA1 /* ImageSearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75AC4612A35F5290050BBA1 /* ImageSearchVM.swift */; };
@@ -41,6 +40,7 @@
 		C7BC35B62A3B5E0400C68927 /* MockApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BC35B52A3B5E0400C68927 /* MockApiRequest.swift */; };
 		C7BC35BC2A3B5EA900C68927 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BC35B72A3B5E6200C68927 /* MockURLProtocol.swift */; };
 		C7BC35BE2A3B607300C68927 /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BC35BD2A3B607300C68927 /* MockService.swift */; };
+		C7BC35C12A3BA52900C68927 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75AC45A2A3545360050BBA1 /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -496,10 +496,10 @@
 			files = (
 				C75AC4762A3790060050BBA1 /* ItemCell.swift in Sources */,
 				C75AC45E2A354F660050BBA1 /* Collection.swift in Sources */,
+				C7BC35C12A3BA52900C68927 /* NetworkError.swift in Sources */,
 				C7BC35A22A3A971900C68927 /* ImageDetailVC.swift in Sources */,
 				C75AC4592A3540A20050BBA1 /* EndPoint.swift in Sources */,
 				C75AC4682A374C950050BBA1 /* URLSession.swift in Sources */,
-				C75AC45B2A3545360050BBA1 /* NetworkError.swift in Sources */,
 				C7540EEF2A33957C002A749D /* ImageSearchVC.swift in Sources */,
 				C7BC35982A3A8B6500C68927 /* Response.swift in Sources */,
 				C7BC35A02A3A947D00C68927 /* TableViewDiffableDataSource.swift in Sources */,

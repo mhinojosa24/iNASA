@@ -58,5 +58,33 @@ final class iNASATests: XCTestCase {
                 expectation.fulfill()
             }
         }
+        wait(for: [expectation], timeout: 2)
+    }
+    
+    func testGetImageFailure() throws {
+        let response = HTTPURLResponse(url: req.url,
+                                       statusCode: 400,
+                                       httpVersion: nil,
+                                       headerFields: ["Content-Type": "application/json"]) ?? HTTPURLResponse()
+        
+        let mockData: Data = mockService.loadJsonData(filename: "MockData", extensionType: .json) ?? Data()
+        
+        MockURLProtocol.requestHandler = { request in
+            return (response, mockData)
+        }
+        
+        let expectation = XCTestExpectation(description: "response")
+        mockService.request(req, completionHandler: { items, error in
+            if let error = error {
+                XCTAssertEqual(NetworkError.decodingDataError, error as? NetworkError)
+                expectation.fulfill()
+            }
+            
+            if let _ = items {
+                XCTAssertNoThrow(NetworkError.fatalError)
+                expectation.fulfill()
+            }
+        })
+        wait(for: [expectation], timeout: 2)
     }
 }

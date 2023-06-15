@@ -32,9 +32,11 @@ extension Mockable {
         
         do {
             let data = try Data(contentsOf: URL(filePath: path))
-            let decodedObject = try JSONDecoder().decode(T.self, from: data) 
+            let type = Response.self
+            if let decodedObject = try JSONDecoder().decode(type, from: data).collection.items as? T {
+                completion(.success(decodedObject))                
+            }
             
-            completion(.success(decodedObject))
         } catch {
             print("❌ \(error)")
             fatalError("Failed to decoded the Json.")
